@@ -22,17 +22,14 @@ def Drawing_The_Grid():
                 
             square_drawing = pygame.Rect(x, y, Pixel_Size, Pixel_Size)
             pygame.draw.rect(screen, color, square_drawing)
-
-
+            
 running = True
 while running:
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
-            
+            running = False    
     Drawing_The_Grid()
-    
     pygame.display.flip()
 
 pygame.quit()

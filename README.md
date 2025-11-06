@@ -6,3 +6,4 @@
 
 ## Sprint 2
 - Sprint 2: I made the collectable item using Piskel. Using that collectable, I imported it into the code and made it so that it would spawn at random locations inside the box.
+- Sprint 2 Updated: I created the snake character using piskel and I recreated the collectable item into an apple. Then I used key detection to detect the movement of the character 

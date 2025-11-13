@@ -7,7 +7,6 @@ pygame.init()
 Screen_Width = 750
 Screen_Height = 750
 screen = pygame.display.set_mode((Screen_Width, Screen_Height))
-pygame.display.set_caption("Pygame Snake")
 
 Light_Green = (144, 238, 144)
 Dark_Green = (80, 200, 120)
@@ -23,7 +22,9 @@ Player_Score = 0
 Snake_Image_Source = "Snake.gif" 
 Player_Image = pygame.image.load(Snake_Image_Source)
 Player_Image = pygame.transform.scale(Player_Image, (Pixel_Size, Pixel_Size))
-
+Snake_Body_Image_Source = "Snake_Body.gif"
+Snake_Body_Image = pygame.image.load(Snake_Body_Image_Source)
+Snake_Body_Image = pygame.transform.scale(Snake_Body_Image, (Pixel_Size, Pixel_Size))
 Image_Source = "AppleCollectable.gif"
 Game_Display_Image = pygame.image.load(Image_Source)
 Game_Display_Image = pygame.transform.scale(Game_Display_Image, (Pixel_Size, Pixel_Size))
@@ -47,12 +48,14 @@ def Drawing_The_Grid():
             pygame.draw.rect(screen, color, square_drawing)
 
 def Draw_Snake():
-    for segment_x, segment_y in Snake_Body:
-        screen.blit(Player_Image, (segment_x, segment_y))
+    for index, (segment_x, segment_y) in enumerate(Snake_Body):
+        if index == 0:
+            screen.blit(Player_Image, (segment_x, segment_y))
+        else:
+            screen.blit(Snake_Body_Image, (segment_x, segment_y))
 
 def Draw_Apple():
     screen.blit(Game_Display_Image, (Random_Apple_X, Random_Apple_Y))
-
 def move_snake():
     global Snake_Body
     global Snake_Direction
@@ -63,7 +66,7 @@ def move_snake():
     head_x, head_y = Snake_Body[0]
     new_head_x, new_head_y = head_x, head_y
     if Snake_Direction == "RIGHT":
-        new_head_x += Pixel_Size
+        new_head_x = new_head_x + Pixel_Size
     elif Snake_Direction == "LEFT":
         new_head_x -= Pixel_Size
     elif Snake_Direction == "UP":

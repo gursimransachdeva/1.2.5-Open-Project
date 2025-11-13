@@ -76,11 +76,12 @@ def move_snake():
     new_head = (new_head_x, new_head_y)
     ate_apple = new_head_x == Random_Apple_X and new_head_y == Random_Apple_Y
     Snake_Body.insert(0, new_head) 
-    
     if not ate_apple:
         Snake_Body.pop() 
     return ate_apple 
-
+'''For lines 66 to 74 I used AI, but I changed up the variable names to make it more descriptive. 
+What the code does is that it changes the direction of the sprite s that it can go in one direction in the area
+the user wishes it to go to. '''
 def handle_collectable(ate_apple):
     global Random_Apple_X
     global Random_Apple_Y
@@ -114,8 +115,7 @@ while running:
         handle_collectable(ate_apple)
     Drawing_The_Grid()
     Draw_Apple()
-    Draw_Snake() 
-
+    Draw_Snake()  
     pygame.display.flip()
     Clock.tick(60)
 

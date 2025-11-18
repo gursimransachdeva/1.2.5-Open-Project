@@ -1,9 +1,11 @@
-import pygame
+import pygame # type: ignore
 import random as rand
 import time 
 
 pygame.init()
-
+BLACK = (0, 0, 0) 
+FONT_SIZE = 30
+SCORE_FONT = pygame.font.Font(None, FONT_SIZE)
 Screen_Width = 750
 Screen_Height = 750
 screen = pygame.display.set_mode((Screen_Width, Screen_Height))
@@ -105,7 +107,6 @@ def handle_collectable(ate_apple):
     if ate_apple:
         Player_Score = Player_Score + 1
         Random_Apple_X, Random_Apple_Y = generate_new_apple_position()
-        print(Player_Score)
 
 running = True
 frame_count = 0
@@ -135,6 +136,11 @@ while running:
     Drawing_The_Grid()
     Draw_Apple()
     Draw_Snake()
+    score_text = str(Player_Score)
+    score_surface = SCORE_FONT.render(score_text, True, BLACK) 
+    score_rect = score_surface.get_rect()
+    score_rect.topleft = (10, 10)
+    screen.blit(score_surface, score_rect)
     pygame.display.flip()
     Clock.tick(60)
 

@@ -133,6 +133,10 @@ while running:
         handle_collectable(ate_apple)
         if Snake_Head_To_Body_Collision() or Check_Wall_Collision():
                 Game_Over = True
+    
+    if Game_Over == True:
+        Player_Score = "You Died!"
+   
     Drawing_The_Grid()
     Draw_Apple()
     Draw_Snake()

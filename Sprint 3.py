@@ -1,6 +1,6 @@
-import pygame
 import random as rand
 import time 
+import pygame
 
 pygame.init()
 BLACK = (0, 0, 0) 
@@ -116,13 +116,13 @@ while running:
         if event.type == pygame.QUIT:
             running = False 
         if not Game_Over and event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP and Snake_Direction != "DOWN":
+            if event.key == pygame.K_UP or event.key == pygame.K_w  and Snake_Direction != "DOWN":
                 Next_Direction = "UP"
-            elif event.key == pygame.K_DOWN and Snake_Direction != "UP": 
+            elif event.key == pygame.K_DOWN or event.key == pygame.K_s and Snake_Direction != "UP": 
                 Next_Direction = "DOWN"
-            elif event.key == pygame.K_RIGHT and Snake_Direction != "LEFT":
+            elif event.key == pygame.K_RIGHT or event.key == pygame.K_d and Snake_Direction != "LEFT":
                 Next_Direction = "RIGHT"
-            elif event.key == pygame.K_LEFT and Snake_Direction != "RIGHT":
+            elif event.key == pygame.K_LEFT or event.key == pygame.K_a and Snake_Direction != "RIGHT":
                 Next_Direction = "LEFT"
     
     if not Game_Over:

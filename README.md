@@ -9,4 +9,5 @@
 - **Sprint 2 Updated:** I created the snake character using piskel and I recreated the collectable item into an apple. Then I used key detection to detect the movement of the character 
 
 ## Sprint 3
-- **Sprint 3:** I made the snake move around better by implementing frames. I also established the sytstem where the snake inscreases it length after it consumes the apple. Also, I made the snake's body change so after it consumes an item, the body sprite changes from it being the head only being duplicated to only the head being there and the rest the body sprite
+- **Sprint 3:** I made the snake move around better by implementing frames. I also established the sytstem where the snake inscreases it length after it consumes the apple. Also, I made the snake's body change so after it consumes an item, the body sprite changes from it being the head only being duplicated to only the head being there and the rest the body sprite.
+- **Sprint 3 Updated:** I made the score display everytime the snake touched the collectable and I made the snake such that when it moves forward, it goes automatically. ALos, when the snake dies, I made it so that the score displays right in the center.

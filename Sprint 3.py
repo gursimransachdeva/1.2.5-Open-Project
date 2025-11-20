@@ -1,6 +1,6 @@
+import pygame 
 import random as rand
 import time 
-import pygame
 
 pygame.init()
 BLACK = (0, 0, 0) 
@@ -21,6 +21,7 @@ Snake_Body = [(0, 0)]
 Snake_Direction = "RIGHT"
 Next_Direction = "RIGHT"
 Player_Score = 0
+Game_Score = 0
 
 Snake_Image_Source = "Snake.gif" 
 Player_Image = pygame.image.load(Snake_Image_Source)
@@ -103,9 +104,11 @@ def handle_collectable(ate_apple):
     global Random_Apple_X
     global Random_Apple_Y
     global Player_Score
+    global Game_Score
 
     if ate_apple:
         Player_Score = Player_Score + 1
+        Game_Score = Game_Score + 1
         Random_Apple_X, Random_Apple_Y = generate_new_apple_position()
 
 running = True
@@ -116,7 +119,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False 
         if not Game_Over and event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP or event.key == pygame.K_w  and Snake_Direction != "DOWN":
+            if event.key == pygame.K_UP or event.key == pygame.K_w and Snake_Direction != "DOWN":
                 Next_Direction = "UP"
             elif event.key == pygame.K_DOWN or event.key == pygame.K_s and Snake_Direction != "UP": 
                 Next_Direction = "DOWN"
@@ -136,7 +139,6 @@ while running:
     
     if Game_Over == True:
         Player_Score = "You Died!"
-   
     Drawing_The_Grid()
     Draw_Apple()
     Draw_Snake()
@@ -145,6 +147,13 @@ while running:
     score_rect = score_surface.get_rect()
     score_rect.topleft = (10, 10)
     screen.blit(score_surface, score_rect)
+
+    loss_score_text = "Your score was: " + str(Game_Score)
+    loss_score_surface = SCORE_FONT.render(loss_score_text, True, BLACK)
+    loss_score_rect = loss_score_surface.get_rect()
+    loss_score_rect.center = (375,375)
+    if Game_Over == True:
+        screen.blit(loss_score_surface, loss_score_rect)
     pygame.display.flip()
     Clock.tick(60)
 
